@@ -1,0 +1,164 @@
+:root{
+	--size:12px;
+	--gap:3px;
+	--week-label-width:36px;
+	--c0:#161b22;
+	--c1:#0e4429;
+	--c2:#006d32;
+	--c3:#26a641;
+	--c4:#39d353;
+}
+body{
+	font-family: system-ui,Segoe UI,Roboto,Arial;
+	padding:16px;
+	background-color: #0d1117;
+	color: #c9d1d9;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: calc(100vh - 32px);
+	box-sizing: border-box;
+}
+header h1{margin:0 0 12px 0}
+#controls{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+#gridWrap{overflow:auto;display:grid;grid-template-columns:auto 1fr;gap:8px}
+#grid{
+	display:grid;
+	grid-auto-flow:column;
+	grid-auto-columns:var(--size);
+	column-gap:var(--gap);
+	row-gap:var(--gap);
+}
+.col{
+	display:grid;
+	grid-template-rows: repeat(7, var(--size));
+	gap: var(--gap);
+}
+.cell{
+	width:var(--size);
+	height:var(--size);
+	background:var(--c0);
+	border-radius:2px;
+	cursor:pointer;
+	box-sizing:border-box;
+}
+.cell.disabled {
+	background: var(--c0);
+	cursor: default;
+	opacity: 0.2;
+}
+.intensity-0{background:var(--c0)}
+.intensity-1{background:var(--c1)}
+.intensity-2{background:var(--c2)}
+.intensity-3{background:var(--c3)}
+.intensity-4{background:var(--c4)}
+.legend{
+	margin-top:12px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 12px;
+	color: #8b949e;
+}
+.legend-cell{
+	display:inline-block;
+	border-radius:3px;
+	width: var(--size);
+	height: var(--size);
+}
+#note{
+	font-size:12px;
+	color:#8b949e;
+	display: block;
+	margin: 0;
+	margin-top: 12px;
+}
+#monthLabels{
+	display:grid;
+	grid-template-columns:repeat(53, calc(var(--size) + var(--gap)));
+	width: calc(53 * var(--size) + 52 * var(--gap));
+	margin-left:var(--week-label-width);
+	font-size:12px;
+	color:#8b949e;
+	padding-bottom:4px;
+	overflow: hidden;
+}
+#monthLabels span {
+	text-align: left;
+	display: block;
+	grid-column: span 1;
+}
+#weekLabels{width:var(--week-label-width);display:flex;flex-direction:column;justify-content:space-between;margin-top:var(--size);font-size:12px;color:#8b949e;line-height:var(--size)}
+#weekLabels span{display:block;text-align:right}
+#calendar{
+	display:inline-block;
+	overflow:auto;
+	padding:12px;
+	border:1px solid #30363d;
+	border-radius:6px;
+	background:#0d1117;
+}
+.calendar-body {
+	display: flex;
+	gap: 8px;
+}
+button {
+	background-color: #21262d;
+	color: #c9d1d9;
+	border: 1px solid #30363d;
+	padding: 5px 16px;
+	font-size: 14px;
+	font-weight: 500;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+button:hover {
+	background-color: #30363d;
+	border-color: #8b949e;
+}
+button:active {
+	background-color: #21262d;
+	border-color: #30363d;
+}
+
+/* --- SÉLECTEUR MODIFIÉ POUR INCLURE LE CHAMP 'text' --- */
+input[type="time"],
+input[type="email"],
+input[type="number"],
+input[type="text"] {
+	background-color: #0d1117;
+	color: #c9d1d9;
+	border: 1px solid #30363d;
+	border-radius: 6px;
+	padding: 5px 8px;
+	font-size: 14px;
+	box-sizing: border-box;
+}
+
+/* Ajustement pour le champ URL pour qu'il prenne plus de place */
+#settings div input[type="text"] {
+	width: 250px;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+	filter: invert(1);
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  filter: invert(1);
+}
+#settings {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	align-items: center;
+}
+#settings div {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}

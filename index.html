@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Custom GitHub Contribution Drawer</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header>
+		<h1>Draw Your GitHub Contributions</h1>
+	</header>
+
+	<main>
+		<div id="controls">
+			<button id="clearBtn">Clear</button>
+			<button id="exportBtn">Export script (.sh)</button>
+		</div>
+
+		<div id="settings">
+			<div>
+				<label for="emailInput">GitHub Email:</label>
+				<input id="emailInput" type="email" placeholder="your-email@github.com" />
+			</div>
+			<div>
+				<label for="gitUrlInput">Git repository URL:</label>
+				<input id="gitUrlInput" type="text" placeholder="https://github.com/user/repo.git" />
+			</div>
+			<div>
+				<label for="yearInput">Year:</label>
+				<input id="yearInput" type="number" min="1970" max="2100" />
+			</div>
+			<div>
+				<label for="timeInput">Commit time (HH:MM):</label>
+				<input id="timeInput" type="time" value="12:00" />
+			</div>
+		</div>
+		
+		<span id="note">The generated script.sh will take care of everything (init, commit, push).</span>
+
+
+		<div id="calendar">
+			<div id="monthLabels"></div>
+			<div class="calendar-body">
+				<div id="weekLabels">
+					<span>Mon</span>
+					<span>Wed</span>
+					<span>Fri</span>
+				</div>
+				<div id="grid"></div>
+			</div>
+		</div>
+
+		<div class="legend">
+			<span>Less</span>
+			<span class="cell legend-cell intensity-0"></span>
+			<span class="cell legend-cell intensity-1"></span>
+			<span class="cell legend-cell intensity-2"></span>
+			<span class="cell legend-cell intensity-3"></span>
+			<span class="cell legend-cell intensity-4"></span>
+			<span>More</span>
+		</div>
+	</main>
+
+	<script src="app.js"></script>
+</body>
+</html>
